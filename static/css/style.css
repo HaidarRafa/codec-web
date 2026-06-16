@@ -1,0 +1,244 @@
+/*
+ * style.css - Kustomisasi CSS untuk Media Codec Steganography System
+ * Bootstrap 5 dark mode dengan sidebar dan komponen kustom
+ */
+
+/* ==========================================
+   1. SIDEBAR STYLES
+   ========================================== */
+
+/* Sidebar utama - fixed di kiri, full height */
+.sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 100vh;
+    background: #1a1d23;
+    border-right: 1px solid #2a2d35;
+    transition: all 0.3s ease;
+}
+
+/* Header sidebar dengan logo */
+.sidebar-header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #38bdf8;
+}
+
+/* Brand text di sidebar */
+.sidebar-brand {
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Garis pemisah sidebar */
+.sidebar-divider {
+    margin: 0 16px;
+    border-color: #2a2d35;
+}
+
+/* Navigasi link di sidebar */
+.sidebar .nav-link {
+    padding: 12px 20px;
+    margin: 2px 8px;
+    border-radius: 10px;
+    color: #9ca3af;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+/* Hover efek pada nav link */
+.sidebar .nav-link:hover {
+    color: #e5e7eb;
+    background: #2a2d35;
+}
+
+/* Nav link yang aktif (halaman sedang dibuka) */
+.sidebar .nav-link.active {
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.1);
+    border-left: 3px solid #38bdf8;
+}
+
+/* Footer sidebar */
+.sidebar-footer {
+    padding: 16px 20px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 250px;
+}
+
+/* ==========================================
+   2. PAGE CONTENT
+   ========================================== */
+
+/* Area konten utama di sebelah kanan sidebar */
+#page-content-wrapper {
+    flex: 1;
+    min-width: 0;
+    background: #111318;
+    min-height: 100vh;
+}
+
+/* ==========================================
+   3. WRAPPER (SIDEBAR + CONTENT)
+   ========================================== */
+
+/* Flex container untuk sidebar dan konten */
+#wrapper {
+    display: flex;
+}
+
+/* ==========================================
+   4. CUSTOM NAV TABS
+   ========================================== */
+
+/* Tab navigasi kustom dengan background gelap */
+.nav-tabs-custom .nav-link {
+    color: #9ca3af;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px 10px 0 0;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+/* Hover efek pada tab */
+.nav-tabs-custom .nav-link:hover {
+    color: #e5e7eb;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Tab yang aktif */
+.nav-tabs-custom .nav-link.active {
+    color: #38bdf8;
+    background: #1a1d23;
+    border-bottom: 2px solid #38bdf8;
+}
+
+/* ==========================================
+   5. CARD STATISTICS (DASHBOARD)
+   ========================================== */
+
+/* Card statistik di dashboard */
+.stat-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Icon lingkaran di card statistik */
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+}
+
+/* ==========================================
+   6. RESULT BOX
+   ========================================== */
+
+/* Container hasil operasi (success/error) */
+.result-box {
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 12px;
+}
+
+.result-box.success {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid #10b981;
+}
+
+.result-box.error {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid #ef4444;
+}
+
+/* Statistik dalam result */
+.result-stat {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    font-size: 0.9rem;
+}
+
+/* Tombol download di result */
+.download-btn {
+    display: inline-block;
+    margin-top: 8px;
+}
+
+/* ==========================================
+   7. MESSAGE BOX (STEGO DECODE RESULT)
+   ========================================== */
+
+/* Kotak pesan hasil decode steganografi */
+.message-box {
+    background: #111318;
+    border: 1px solid #2a2d35;
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 8px;
+    word-break: break-all;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+/* ==========================================
+   8. RESPONSIVE DESIGN
+   ========================================== */
+
+/* Untuk layar kecil: sidebar menjadi off-canvas (tersembunyi) */
+@media (max-width: 767.98px) {
+    .sidebar {
+        margin-left: -250px;
+        position: fixed;
+        z-index: 1040;
+    }
+
+    .sidebar.show {
+        margin-left: 0;
+    }
+
+    #page-content-wrapper {
+        width: 100%;
+    }
+}
+
+/* Untuk layar medium ke atas sidebar selalu terlihat */
+@media (min-width: 768px) {
+    .sidebar {
+        margin-left: 0 !important;
+    }
+}
+
+/* ==========================================
+   9. UTILITY CLASSES
+   ========================================== */
+
+/* Cursor pointer untuk elemen yang bisa diklik */
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* Animasi fade in */
+.fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
