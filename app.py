@@ -6,6 +6,7 @@ Fitur:
 - Kompresi kustom: RLE + Huffman (lossless)
 - Steganografi: LSB (Least Significant Bit) untuk gambar, audio, video
 - Dashboard dengan Chart.js untuk visualisasi statistik
+- install requrements dengan pip install -r requirements.txt (flask, pillow, pydub, ffmpeg-python, matplotlib)
 """
 
 import os

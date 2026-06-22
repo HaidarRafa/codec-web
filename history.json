@@ -1,0 +1,26 @@
+[
+  {
+    "media": "image",
+    "method": "JPEG (q=85)",
+    "original_size": 86018,
+    "compressed_size": 96575,
+    "ratio": -12.27,
+    "timestamp": "2026-06-22T20:14:31.754984"
+  },
+  {
+    "media": "image",
+    "method": "JPEG (q=85)",
+    "original_size": 596216,
+    "compressed_size": 96575,
+    "ratio": 83.8,
+    "timestamp": "2026-06-22T20:15:31.588241"
+  },
+  {
+    "media": "image",
+    "method": "RLE+Huffman",
+    "original_size": 596216,
+    "compressed_size": 1762089,
+    "ratio": -195.55,
+    "timestamp": "2026-06-22T20:15:56.402621"
+  }
+]
