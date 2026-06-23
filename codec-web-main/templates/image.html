@@ -1,0 +1,190 @@
+{# image.html - Halaman Image Codec & Steganography #}
+{% extends "base.html" %}
+
+{% block title %}Image Codec - Media Codec Steganography{% endblock %}
+
+{% block content %}
+{# ===== HEADER HALAMAN ===== #}
+<div class="mb-4">
+    <h1 class="h3 mb-1">Image Codec</h1>
+    <p class="text-muted mb-0">
+        Kompresi/dekompresi gambar + Steganografi LSB
+    </p>
+</div>
+
+{# ===== TAB NAVIGASI ===== #}
+<ul class="nav nav-tabs nav-tabs-custom mb-4" id="mainTabs" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="tab-compress" data-bs-toggle="tab"
+                data-bs-target="#panel-compress" type="button" role="tab">
+            <i class="bi bi-file-earmark-zip me-1"></i>Compress
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tab-decompress" data-bs-toggle="tab"
+                data-bs-target="#panel-decompress" type="button" role="tab">
+            <i class="bi bi-file-earmark-arrow-up me-1"></i>Decompress
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tab-stego-encode" data-bs-toggle="tab"
+                data-bs-target="#panel-stego-encode" type="button" role="tab">
+            <i class="bi bi-lock me-1"></i>Stego Encode
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tab-stego-decode" data-bs-toggle="tab"
+                data-bs-target="#panel-stego-decode" type="button" role="tab">
+            <i class="bi bi-unlock me-1"></i>Stego Decode
+        </button>
+    </li>
+</ul>
+
+{# ===== TAB CONTENT ===== #}
+<div class="tab-content" id="mainTabContent">
+
+    {# --- TAB: COMPRESS --- #}
+    <div class="tab-pane fade show active" id="panel-compress" role="tabpanel">
+        <div class="card bg-dark border-secondary">
+            <div class="card-body">
+                <h5 class="card-title">Kompresi Gambar</h5>
+                <p class="text-muted small">Upload gambar untuk dikompresi</p>
+
+                <!-- Pilihan metode kompresi -->
+                <div class="mb-3">
+                    <label class="form-label">Metode Kompresi</label>
+                    <select class="form-select" id="image-method">
+                        <option value="std">JPEG (Standard - Lossy)</option>
+                        <option value="custom">RLE + Huffman (Lossless)</option>
+                    </select>
+                </div>
+
+                <!-- Parameter quality (JPEG) -->
+                <div class="mb-3" id="param-quality-group">
+                    <label class="form-label">Quality (JPEG): <span id="quality-value">85</span></label>
+                    <input type="range" class="form-range" id="param-quality" min="1" max="100" value="85">
+                    <div class="d-flex justify-content-between small text-muted">
+                        <span>Smaller</span><span>Better Quality</span>
+                    </div>
+                </div>
+
+                <!-- File upload -->
+                <div class="mb-3">
+                    <label class="form-label">Pilih File</label>
+                    <input type="file" class="form-control" id="file-compress" accept="image/*">
+                </div>
+
+                <!-- Tombol aksi -->
+                <button class="btn btn-primary" id="btn-compress" disabled>
+                    <i class="bi bi-compress me-1"></i>Compress
+                </button>
+
+                <!-- Spinner loading -->
+                <div class="text-center mt-3 d-none" id="spinner-compress">
+                    <div class="spinner-border text-info" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="text-muted small mt-1">Processing...</p>
+                </div>
+
+                <!-- Hasil -->
+                <div id="result-compress" class="mt-3"></div>
+            </div>
+        </div>
+    </div>
+
+    {# --- TAB: DECOMPRESS --- #}
+    <div class="tab-pane fade" id="panel-decompress" role="tabpanel">
+        <div class="card bg-dark border-secondary">
+            <div class="card-body">
+                <h5 class="card-title">Dekompresi Gambar</h5>
+                <p class="text-muted small">Upload file .cmp atau .jpg untuk didekompresi</p>
+
+                <div class="mb-3">
+                    <label class="form-label">Pilih File</label>
+                    <input type="file" class="form-control" id="file-decompress" accept=".cmp,.jpg,.jpeg">
+                </div>
+
+                <button class="btn btn-primary" id="btn-decompress" disabled>
+                    <i class="bi bi-arrow-up-circle me-1"></i>Decompress
+                </button>
+
+                <div class="text-center mt-3 d-none" id="spinner-decompress">
+                    <div class="spinner-border text-info" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="text-muted small mt-1">Processing...</p>
+                </div>
+
+                <div id="result-decompress" class="mt-3"></div>
+            </div>
+        </div>
+    </div>
+
+    {# --- TAB: STEGO ENCODE --- #}
+    <div class="tab-pane fade" id="panel-stego-encode" role="tabpanel">
+        <div class="card bg-dark border-secondary">
+            <div class="card-body">
+                <h5 class="card-title">Steganografi - Encode Pesan</h5>
+                <p class="text-muted small">Sembunyikan pesan rahasia dalam gambar menggunakan LSB</p>
+
+                <div class="mb-3">
+                    <label class="form-label">Pilih Gambar</label>
+                    <input type="file" class="form-control" id="file-stego-encode" accept="image/*">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Pesan Rahasia</label>
+                    <textarea class="form-control" id="msg-encode" rows="3"
+                              placeholder="Masukkan pesan yang akan disembunyikan..."></textarea>
+                </div>
+
+                <button class="btn btn-primary" id="btn-stego-encode" disabled>
+                    <i class="bi bi-lock me-1"></i>Encode
+                </button>
+
+                <div class="text-center mt-3 d-none" id="spinner-stego-encode">
+                    <div class="spinner-border text-info" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="text-muted small mt-1">Processing...</p>
+                </div>
+
+                <div id="result-stego-encode" class="mt-3"></div>
+            </div>
+        </div>
+    </div>
+
+    {# --- TAB: STEGO DECODE --- #}
+    <div class="tab-pane fade" id="panel-stego-decode" role="tabpanel">
+        <div class="card bg-dark border-secondary">
+            <div class="card-body">
+                <h5 class="card-title">Steganografi - Decode Pesan</h5>
+                <p class="text-muted small">Ekstrak pesan rahasia dari gambar stego</p>
+
+                <div class="mb-3">
+                    <label class="form-label">Pilih Gambar Stego</label>
+                    <input type="file" class="form-control" id="file-stego-decode" accept="image/*">
+                </div>
+
+                <button class="btn btn-primary" id="btn-stego-decode" disabled>
+                    <i class="bi bi-unlock me-1"></i>Decode
+                </button>
+
+                <div class="text-center mt-3 d-none" id="spinner-stego-decode">
+                    <div class="spinner-border text-info" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="text-muted small mt-1">Processing...</p>
+                </div>
+
+                <div id="result-stego-decode" class="mt-3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/image.js') }}"></script>
+{% endblock %}
