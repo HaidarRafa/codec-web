@@ -1,0 +1,98 @@
+[
+  {
+    "media": "image",
+    "method": "JPEG (q=85)",
+    "original_size": 6314161,
+    "compressed_size": 1654618,
+    "ratio": 73.8,
+    "timestamp": "2026-06-23T20:28:58.411700"
+  },
+  {
+    "media": "image",
+    "method": "JPEG (q=100)",
+    "original_size": 6314161,
+    "compressed_size": 8359868,
+    "ratio": -32.4,
+    "timestamp": "2026-06-23T20:29:04.009120"
+  },
+  {
+    "media": "image",
+    "method": "JPEG (q=27)",
+    "original_size": 6314161,
+    "compressed_size": 285327,
+    "ratio": 95.48,
+    "timestamp": "2026-06-23T20:29:10.867029"
+  },
+  {
+    "media": "image",
+    "method": "JPEG (q=96)",
+    "original_size": 6314161,
+    "compressed_size": 5014053,
+    "ratio": 20.59,
+    "timestamp": "2026-06-23T20:29:15.362004"
+  },
+  {
+    "media": "image",
+    "method": "JPEG (q=99)",
+    "original_size": 6314161,
+    "compressed_size": 6862560,
+    "ratio": -8.69,
+    "timestamp": "2026-06-23T20:29:22.969679"
+  },
+  {
+    "media": "image",
+    "method": "RLE+Huffman",
+    "original_size": 6314161,
+    "compressed_size": 63008106,
+    "ratio": -897.89,
+    "timestamp": "2026-06-23T20:30:01.670755"
+  },
+  {
+    "media": "image",
+    "method": "JPEG (q=85)",
+    "original_size": 6314161,
+    "compressed_size": 1654618,
+    "ratio": 73.8,
+    "timestamp": "2026-06-23T20:38:54.982692"
+  },
+  {
+    "media": "image",
+    "method": "JPEG (q=94)",
+    "original_size": 6314161,
+    "compressed_size": 3429837,
+    "ratio": 45.68,
+    "timestamp": "2026-06-23T20:38:58.666127"
+  },
+  {
+    "media": "image",
+    "method": "RLE+Huffman",
+    "original_size": 6314161,
+    "compressed_size": 45177788,
+    "ratio": -615.5,
+    "timestamp": "2026-06-23T20:39:24.794458"
+  },
+  {
+    "media": "image",
+    "method": "JPEG (q=85)",
+    "original_size": 14178315,
+    "compressed_size": 1396698,
+    "ratio": 90.15,
+    "timestamp": "2026-06-23T20:53:56.234906"
+  },
+  {
+    "media": "image",
+    "method": "JPEG (q=97)",
+    "original_size": 14178315,
+    "compressed_size": 2354362,
+    "ratio": 83.39,
+    "timestamp": "2026-06-23T20:53:59.433252"
+  },
+  {
+    "media": "image",
+    "method": "RLE+Huffman",
+    "original_size": 14178315,
+    "compressed_size": 45179446,
+    "ratio": -218.65,
+    "timestamp": "2026-06-23T20:54:26.840363"
+  }
+]
